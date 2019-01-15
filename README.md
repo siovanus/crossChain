@@ -12,7 +12,7 @@
   	用户只需调用主链的冻结ong接口和子链的销毁ongx接口即可完成资产的转移。
 
 ## 主链的冻结ong接口调用方法：
-···java
+```java
     public String ongSwap(Account account, SwapParam param, Account payer, long gaslimit, long gasprice) throws Exception {
         if(account == null || param == null || payer == null || gaslimit < 0|| gasprice < 0){
             throw new SDKException(ErrorCode.OtherError("parameter is wrong"));
@@ -33,11 +33,11 @@
         }
         return null;
     }
-···
+```
 github地址：https://github.com/lucas7788/ontology-java-sdk/blob/sidechainsdk/src/main/java/com/github/ontio/smartcontract/nativevm/SideChainGovernance.java
 
 ## 子链的销毁ongx接口调用方法：
-···java
+```java
     public String ongxSwap(Account account, Swap swap, Account payer, long gaslimit, long gasprice) throws Exception {
         if(account == null || swap == null|| swap.value <=0 || payer == null || gaslimit < 0||gasprice < 0){
             throw new SDKException(ErrorCode.ParamError);
@@ -52,5 +52,5 @@ github地址：https://github.com/lucas7788/ontology-java-sdk/blob/sidechainsdk/
         sdk.getSideChainConnectMgr().sendRawTransaction(tx.toHexString());
         return tx.hash().toHexString();
     }
-···
+```
 github地址：https://github.com/lucas7788/ontology-java-sdk/blob/sidechainsdk/src/main/java/com/github/ontio/sidechain/smartcontract/ongx/OngX.java
